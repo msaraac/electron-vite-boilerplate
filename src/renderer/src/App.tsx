@@ -1,9 +1,14 @@
+import { Route, Routes } from 'react-router-dom'
+import MainPage from '@renderer/pages/mainpage'
+import AuthPage from '@renderer/pages/authpage'
+
 function App(): React.JSX.Element {
   return (
     <>
-      <div className="flex">
-        <h1 className="">test</h1>
-      </div>
+      <Routes>
+        <Route element={<MainPage />} path="/main-page" />
+        <Route element={<AuthPage />} path="/" />
+      </Routes>
     </>
   )
 }

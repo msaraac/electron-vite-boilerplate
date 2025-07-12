@@ -2,6 +2,9 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import Store from 'electron-store'
+
+const electronStore = new Store()
 
 function createWindow(): void {
   // Create the browser window.
@@ -12,7 +15,7 @@ function createWindow(): void {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
+      preload: join(__dirname, '../preload/index.mjs'),
       sandbox: false
     }
   })
@@ -49,8 +52,15 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  // Electron Store
+  ipcMain.on('electron-store-get', async (event, val) => {
+    console.log(`Get electron store value for key: ${val}`)
+    event.returnValue = electronStore.get(val)
+  })
+  ipcMain.on('electron-store-set', async (_event, key, val) => {
+    console.log(`Set electron store value for key: ${key}, value: ${val}`)
+    electronStore.set(key, val)
+  })
 
   createWindow()
 

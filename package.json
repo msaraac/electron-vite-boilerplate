@@ -5,6 +5,7 @@
   "main": "./out/main/index.js",
   "author": "example.com",
   "homepage": "https://electron-vite.org",
+  "type": "module",
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint --cache .",
@@ -28,9 +29,12 @@
     "@heroui/system": "^2.4.18",
     "@heroui/theme": "^2.4.17",
     "@tailwindcss/vite": "^4.1.11",
+    "electron-store": "^10.1.0",
     "electron-updater": "^6.3.9",
     "framer-motion": "^12.23.3",
-    "tailwindcss": "^4.1.11"
+    "react-router-dom": "^7.6.3",
+    "tailwindcss": "^4.1.11",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",
@@ -42,6 +46,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "electron": "^35.1.5",
     "electron-builder": "^25.1.8",
+    "electron-devtools-installer": "^4.0.0",
     "electron-vite": "^3.1.0",
     "eslint": "^9.24.0",
     "eslint-plugin-react": "^7.37.5",

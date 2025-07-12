@@ -1,16 +1,18 @@
 import './styles/globals.css'
 
+import { HashRouter } from 'react-router-dom'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
-import { HeroUIProvider } from '@heroui/react'
+
+import { Provider } from '@renderer/provider'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HeroUIProvider>
-      <main className="dark text-foreground bg-background">
+    <HashRouter>
+      <Provider>
         <App />
-      </main>
-    </HeroUIProvider>
+      </Provider>
+    </HashRouter>
   </StrictMode>
 )
