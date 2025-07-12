@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: empadigital-report-toolkit
+productName: electron-vite-boilerplate
 directories:
   buildResources: build
 files:
@@ -12,7 +12,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: empadigital-report-toolkit
+  executableName: electron-vite-boilerplate
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
