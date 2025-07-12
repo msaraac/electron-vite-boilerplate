@@ -16,11 +16,17 @@ function AuthPage(): React.JSX.Element {
     }
   }, [isAuthenticated])
 
+  const testError = () => {
+    // This function is just for testing purposes
+    throw new Error('This is a test error')
+  }
+
   return (
     <>
       <h1>Auth Page</h1>
       <p>{isAuthenticated ? 'You are authenticated' : 'You are not authenticated'}</p>
       <Button onPress={() => setAuthenticated(!isAuthenticated)}>Test</Button>
+      <Button onPress={() => testError()}>Test Error</Button>
     </>
   )
 }

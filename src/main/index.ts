@@ -1,8 +1,22 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, session } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import Store from 'electron-store'
+import * as Sentry from '@sentry/electron/main'
+import { init as reactInit } from '@sentry/react'
+
+Sentry.init(
+  {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    dsn: import.meta.env.MAIN_VITE_SENTRY_DSN,
+    getSessions: () => [session.defaultSession],
+    debug: true,
+    ipcMode: Sentry.IPCMode.Protocol
+  },
+  reactInit
+)
 
 const electronStore = new Store()
 
